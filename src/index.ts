@@ -54,20 +54,22 @@ export class TicTacToeGame {
     let winner: Player | Draw | undefined = undefined;
     // check horizontal (rows)
     this.board.forEach((row) => {
-      if (row.every((cell) => cell == Cell.X)) {
-        winner = Player.X;
-      } else if (row.every((cell) => cell == Cell.O)) {
-        winner = Player.O;
-      }
+      Object.values(Player).forEach((player) => {
+        let check = player == Player.X ? Cell.X : Cell.O;
+        if (row.every((cell) => cell == check)) {
+          winner = player;
+        }
+      });
     });
 
     // check vertical (columns)
     for (let column = 0; column < this.columns; column++) {
-      if (this.board.every((row) => row[column] == Cell.X)) {
-        winner = Player.X;
-      } else if (this.board.every((row) => row[column] == Cell.O)) {
-        winner = Player.O;
-      }
+      Object.values(Player).forEach((player) => {
+        let check = player == Player.X ? Cell.X : Cell.O;
+        if (this.board.every((row) => row[column] == check)) {
+          winner = player;
+        }
+      });
     }
 
     if (winner != undefined) {

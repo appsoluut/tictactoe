@@ -1,1 +1,0 @@
-- Iterate over player enum instead of having multiple if statements
