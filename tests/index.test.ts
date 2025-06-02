@@ -1,7 +1,7 @@
 import { Cell, TicTacToeGame } from '@/index';
 
-describe('Tic-Tac-Toe should', () => {
-  test('create an empty game board and start with player X', () => {
+describe(`Tic-Tac-Toe should`, () => {
+  test(`create an empty game board and start with player X`, () => {
     const expectedOutput =
       `Game Board Creation...\n` +
       ` | | \n` +
@@ -18,7 +18,7 @@ describe('Tic-Tac-Toe should', () => {
     expect(tictactoe.display()).toBe(expectedOutput);
   });
 
-  test('validate if player X can mark cell in row 0 column 0', () => {
+  test(`validate if player X can mark cell in row 0 column 0`, () => {
     // X| |
     // -+-+-
     //  | |
@@ -36,7 +36,7 @@ describe('Tic-Tac-Toe should', () => {
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
   });
 
-  test('validate if player O can mark cell in row 2 column 2', () => {
+  test(`validate if player O can mark cell in row 2 column 2`, () => {
     // X| |
     // -+-+-
     //  | |
@@ -51,6 +51,25 @@ describe('Tic-Tac-Toe should', () => {
     let tictactoe = new TicTacToeGame();
     tictactoe.mark({ column: 0, row: 0 });
     tictactoe.mark({ column: 2, row: 2 });
+
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+  });
+
+  test(`validate if a player can't overwrite already marked cell`, () => {
+    // X| |
+    // -+-+-
+    //  | |
+    // -+-+-
+    //  | |
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.EMPTY],
+    ];
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 });
+    tictactoe.mark({ column: 0, row: 0 });
 
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
   });
