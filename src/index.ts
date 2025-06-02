@@ -39,6 +39,7 @@ export class TicTacToeGame {
   private board: Cell[][] = new Array(this.rows)
     .fill(Cell.EMPTY)
     .map(() => new Array(this.columns).fill(Cell.EMPTY));
+  private gameState: GameState = new GameState(TicTacToeState.INITIALIZED);
 
   mark({ row, column }: Coordinates) {
     if (this.board[row][column] != Cell.EMPTY) {
@@ -46,6 +47,26 @@ export class TicTacToeGame {
     }
     this.board[row][column] = this.player == Player.X ? Cell.X : Cell.O;
     this.player = this.player == Player.X ? Player.O : Player.X;
+    this.checkSolutions();
+  }
+
+  private checkSolutions() {
+    let winner: Player | Draw | undefined = undefined;
+    // check horizontal
+    this.board.forEach((row) => {
+      if (row.every((cell) => cell == Cell.X)) {
+        winner = Player.X;
+      } else if (row.every((cell) => cell == Cell.O)) {
+        winner = Player.O;
+      }
+    });
+
+    if (winner != undefined) {
+      this.gameState.state = TicTacToeState.COMPLETED;
+      this.gameState.winner = winner;
+    } else {
+      this.gameState.state = TicTacToeState.IN_PROGRESS;
+    }
   }
 
   getBoard(): Cell[][] {
@@ -53,7 +74,7 @@ export class TicTacToeGame {
   }
 
   getState(): GameState {
-    return new GameState(TicTacToeState.COMPLETED, Player.O);
+    return this.gameState;
   }
 
   display(): string {

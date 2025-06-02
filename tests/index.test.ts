@@ -80,11 +80,11 @@ describe(`Tic-Tac-Toe should`, () => {
     // O|O|O
     // -+-+-
     // X| |
-    // const expectedBoard = [
-    //   [Cell.X, Cell.EMPTY, Cell.X],
-    //   [Cell.O, Cell.O, Cell.O],
-    //   [Cell.X, Cell.EMPTY, Cell.EMPTY],
-    // ];
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.X],
+      [Cell.O, Cell.O, Cell.O],
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+    ];
     const expectedState = new GameState(TicTacToeState.COMPLETED, Player.O);
 
     let tictactoe = new TicTacToeGame();
@@ -95,6 +95,7 @@ describe(`Tic-Tac-Toe should`, () => {
     tictactoe.mark({ column: 0, row: 2 }); // 2: X| |
     tictactoe.mark({ column: 2, row: 1 }); // 1: O|O|O
 
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
     expect(tictactoe.getState()).toStrictEqual(expectedState);
   });
 });
