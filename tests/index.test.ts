@@ -1,11 +1,20 @@
 import { sum } from '@/index';
 
-describe('Sum should be', () => {
-  test('total of 3 when adding 1 and 2', () => {
-    const expectedOutput = 3;
+describe('Tic-Tac-Toe should', () => {
+  test('create an empty game board and start with player X', () => {
+    const expectedOutput =
+      `Game Board Creation...\n` +
+      ` | | \n` +
+      `-+-+-\n` +
+      ` | | \n` +
+      `-+-+-\n` +
+      ` | | \n` +
+      `\n` +
+      `Board Created.\n` +
+      `The game will start with player X\n`;
 
-    let result = sum(1, 2);
+    let tictactoe = new TicTacToeGame();
 
-    expect(result).toBe(expectedOutput);
+    expect(tictactoe.display()).toBe(expectedOutput);
   });
 });
