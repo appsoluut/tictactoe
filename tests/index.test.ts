@@ -116,7 +116,7 @@ describe(`Tic-Tac-Toe should`, () => {
     tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
     tictactoe.mark({ column: 1, row: 1 }); // 1:  |O|
     tictactoe.mark({ column: 0, row: 1 }); // 1: X| |
-    tictactoe.mark({ column: 1, row: 1 }); // 2:  | |O
+    tictactoe.mark({ column: 2, row: 2 }); // 2:  | |O
     tictactoe.mark({ column: 0, row: 2 }); // 2: X| |
 
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);

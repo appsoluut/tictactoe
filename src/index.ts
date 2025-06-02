@@ -62,9 +62,13 @@ export class TicTacToeGame {
     });
 
     // check vertical (columns)
-    this.board.forEach((row, index) => {
-
-    });
+    for (let column = 0; column < this.columns; column++) {
+      if (this.board.every((row) => row[column] == Cell.X)) {
+        winner = Player.X;
+      } else if (this.board.every((row) => row[column] == Cell.O)) {
+        winner = Player.O;
+      }
+    }
 
     if (winner != undefined) {
       this.gameState.state = TicTacToeState.COMPLETED;
