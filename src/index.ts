@@ -71,6 +71,8 @@ export class TicTacToeGame {
         }
       });
     }
+    // check diagonal (\ or /)
+
 
     if (winner != undefined) {
       this.gameState.state = TicTacToeState.COMPLETED;

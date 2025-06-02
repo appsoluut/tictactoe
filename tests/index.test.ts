@@ -122,4 +122,28 @@ describe(`Tic-Tac-Toe should`, () => {
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
     expect(tictactoe.getState()).toStrictEqual(expectedState);
   });
+
+  test(`validate if player X wins if diagonal line is all filled with X's (US-4)`, () => {
+    // X| |
+    // -+-+-
+    // O|X|
+    // -+-+-
+    // O| |X
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+      [Cell.O, Cell.X, Cell.EMPTY],
+      [Cell.O, Cell.EMPTY, Cell.X],
+    ];
+    const expectedState = new GameState(TicTacToeState.COMPLETED, Player.X);
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
+    tictactoe.mark({ column: 0, row: 1 }); // 1: O| |
+    tictactoe.mark({ column: 1, row: 1 }); // 1:  |X|
+    tictactoe.mark({ column: 0, row: 2 }); // 2: 0| |
+    tictactoe.mark({ column: 2, row: 2 }); // 2:  | |
+
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+    expect(tictactoe.getState()).toStrictEqual(expectedState);
+  });
 });
