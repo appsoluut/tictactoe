@@ -6,10 +6,10 @@
 
 ⚠️ TODO
 - Validate if player X wins if vertical line is all filled X's (US-2)
-- Validate if player O wins if horizontal line is all filled with O's (US-3)
 - Validate if player X wins if diagonal line is all filled with X's (US-4)
 - Validate if game ends with a draw if all cells are filled (US-5)
 
 🚧 WIP
+- Validate if player O wins if horizontal line is all filled with O's (US-3)
 
 🅿️ PARKED

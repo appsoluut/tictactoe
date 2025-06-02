@@ -1,4 +1,4 @@
-import { Cell, TicTacToeGame } from '@/index';
+import { Cell, Player, TicTacToeGame } from '@/index';
 
 describe(`Tic-Tac-Toe should`, () => {
   test(`create an empty game board and start with player X [#US-1]`, () => {
@@ -72,5 +72,29 @@ describe(`Tic-Tac-Toe should`, () => {
     tictactoe.mark({ column: 0, row: 0 });
 
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+  });
+
+  test(`validate if player O wins if horizontal line is all marked with O's (US-3)`, () => {
+    // X| |X
+    // -+-+-
+    // O|O|O
+    // -+-+-
+    // X| |
+    // const expectedBoard = [
+    //   [Cell.X, Cell.EMPTY, Cell.X],
+    //   [Cell.O, Cell.O, Cell.O],
+    //   [Cell.X, Cell.EMPTY, Cell.EMPTY],
+    // ];
+    const expectedState = new GameState(COMPLETED, Player.O);
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
+    tictactoe.mark({ column: 0, row: 1 }); // 1: O| |
+    tictactoe.mark({ column: 2, row: 0 }); // 0: X| |X
+    tictactoe.mark({ column: 1, row: 1 }); // 1: O|O|
+    tictactoe.mark({ column: 0, row: 2 }); // 2: X| |
+    tictactoe.mark({ column: 2, row: 1 }); // 1: O|O|O
+
+    expect(tictactoe.getState()).toStrictEqual(expectedState);
   });
 });
