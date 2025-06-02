@@ -1,4 +1,4 @@
-import { sum } from '@/index';
+import { TicTacToeGame } from '@/index';
 
 describe('Tic-Tac-Toe should', () => {
   test('create an empty game board and start with player X', () => {
@@ -11,7 +11,7 @@ describe('Tic-Tac-Toe should', () => {
       ` | | \n` +
       `\n` +
       `Board Created.\n` +
-      `The game will start with player X\n`;
+      `The game will start with player X`;
 
     let tictactoe = new TicTacToeGame();
 

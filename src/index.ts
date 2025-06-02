@@ -1,3 +1,15 @@
-export function sum(a: number, b: number): number {
-  return a + b;
+export class TicTacToeGame {
+  display(): string {
+    return (
+      `Game Board Creation...\n` +
+      ` | | \n` +
+      `-+-+-\n` +
+      ` | | \n` +
+      `-+-+-\n` +
+      ` | | \n` +
+      `\n` +
+      `Board Created.\n` +
+      `The game will start with player X`
+    );
+  }
 }
