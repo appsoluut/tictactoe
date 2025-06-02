@@ -98,4 +98,28 @@ describe(`Tic-Tac-Toe should`, () => {
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
     expect(tictactoe.getState()).toStrictEqual(expectedState);
   });
+
+  test(`validate if player X wins if horizontal line is all marked with X's (US-2)`, () => {
+    // X| |
+    // -+-+-
+    // X|O|
+    // -+-+-
+    // X| |O
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+      [Cell.X, Cell.O, Cell.EMPTY],
+      [Cell.X, Cell.EMPTY, Cell.O],
+    ];
+    const expectedState = new GameState(TicTacToeState.COMPLETED, Player.X);
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
+    tictactoe.mark({ column: 1, row: 1 }); // 1:  |O|
+    tictactoe.mark({ column: 0, row: 1 }); // 1: X| |
+    tictactoe.mark({ column: 1, row: 1 }); // 2:  | |O
+    tictactoe.mark({ column: 0, row: 2 }); // 2: X| |
+
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+    expect(tictactoe.getState()).toStrictEqual(expectedState);
+  });
 });
