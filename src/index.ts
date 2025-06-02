@@ -50,6 +50,15 @@ export class TicTacToeGame {
     this.checkSolutions();
   }
 
+  private isFull(): boolean {
+    this.board.forEach((row) => {
+      if (row.some((cell) => cell == undefined)) {
+        return false;
+      }
+    });
+    return true;
+  }
+
   private checkSolutions() {
     let winner: Player | Draw | undefined = undefined;
     // check horizontal (rows)
@@ -85,6 +94,10 @@ export class TicTacToeGame {
         winner = player;
       }
     });
+
+    if (winner == undefined && this.isFull()) {
+      winner = 'draw';
+    }
 
     if (winner != undefined) {
       this.gameState.state = TicTacToeState.COMPLETED;
