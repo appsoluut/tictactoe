@@ -35,4 +35,23 @@ describe('Tic-Tac-Toe should', () => {
 
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
   });
+
+  test('validate if player O can fill cell in row 2 column 2', () => {
+    // X| |
+    // -+-+-
+    //  | |
+    // -+-+-
+    //  | |O
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.O],
+    ];
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 });
+    tictactoe.mark({ column: 2, row: 2 });
+
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+  });
 });
