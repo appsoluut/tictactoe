@@ -12,6 +12,9 @@ export class TicTacToeGame {
     .map(() => new Array(this.columns).fill(Cell.EMPTY));
 
   mark({ row, column }: Coordinates) {
+    if (this.board[row][column] != Cell.EMPTY) {
+      return;
+    }
     this.board[row][column] = this.player == Player.X ? Cell.X : Cell.O;
     this.player = this.player == Player.X ? Player.O : Player.X;
   }
