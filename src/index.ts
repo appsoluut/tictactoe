@@ -52,13 +52,18 @@ export class TicTacToeGame {
 
   private checkSolutions() {
     let winner: Player | Draw | undefined = undefined;
-    // check horizontal
+    // check horizontal (rows)
     this.board.forEach((row) => {
       if (row.every((cell) => cell == Cell.X)) {
         winner = Player.X;
       } else if (row.every((cell) => cell == Cell.O)) {
         winner = Player.O;
       }
+    });
+
+    // check vertical (columns)
+    this.board.forEach((row, index) => {
+
     });
 
     if (winner != undefined) {

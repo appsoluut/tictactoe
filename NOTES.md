@@ -10,6 +10,7 @@
 - Validate if game ends with a draw if all cells are filled (US-5)
 
 🚧 WIP
+-- 2H MARK --
 - Validate if player X wins if vertical line is all filled X's (US-2)
 
 🅿️ PARKED
