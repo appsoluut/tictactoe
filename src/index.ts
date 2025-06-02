@@ -3,6 +3,35 @@ type Coordinates = {
   column: number;
 };
 
+type Draw = `draw`;
+
+export enum Player {
+  X = `X`,
+  O = `O`,
+}
+
+export enum Cell {
+  EMPTY = ` `,
+  X = `X`,
+  O = `O`,
+}
+
+export enum TicTacToeState {
+  INITIALIZED,
+  IN_PROGRESS,
+  COMPLETED,
+}
+
+export class GameState {
+  state: TicTacToeState = TicTacToeState.INITIALIZED;
+  winner: Player | Draw | undefined = undefined;
+
+  constructor(state: TicTacToeState, winner: Player | Draw | undefined = undefined) {
+    this.state = state;
+    this.winner = winner;
+  }
+}
+
 export class TicTacToeGame {
   private rows: number = 3;
   private columns: number = 3;
@@ -23,6 +52,10 @@ export class TicTacToeGame {
     return this.board;
   }
 
+  getState(): GameState {
+    return new GameState(TicTacToeState.COMPLETED, Player.O);
+  }
+
   display(): string {
     return (
       `Game Board Creation...\n` +
@@ -36,15 +69,4 @@ export class TicTacToeGame {
       `The game will start with player X`
     );
   }
-}
-
-export enum Player {
-  X = `X`,
-  O = `O`,
-}
-
-export enum Cell {
-  EMPTY = ` `,
-  X = `X`,
-  O = `O`,
 }

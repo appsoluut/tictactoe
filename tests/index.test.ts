@@ -1,4 +1,4 @@
-import { Cell, Player, TicTacToeGame } from '@/index';
+import { Cell, GameState, Player, TicTacToeGame, TicTacToeState } from '@/index';
 
 describe(`Tic-Tac-Toe should`, () => {
   test(`create an empty game board and start with player X [#US-1]`, () => {
@@ -85,7 +85,7 @@ describe(`Tic-Tac-Toe should`, () => {
     //   [Cell.O, Cell.O, Cell.O],
     //   [Cell.X, Cell.EMPTY, Cell.EMPTY],
     // ];
-    const expectedState = new GameState(COMPLETED, Player.O);
+    const expectedState = new GameState(TicTacToeState.COMPLETED, Player.O);
 
     let tictactoe = new TicTacToeGame();
     tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
