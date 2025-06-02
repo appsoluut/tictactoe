@@ -71,8 +71,20 @@ export class TicTacToeGame {
         }
       });
     }
-    // check diagonal (\ or /)
 
+    // check diagonal (\ or /)
+    Object.values(Player).forEach((player) => {
+      const check = player == Player.X ? Cell.X : Cell.O;
+      if (this.board[0][0] == check && this.board[1][1] == check && this.board[2][2] == check) {
+        winner = player;
+      } else if (
+        this.board[0][2] == check &&
+        this.board[1][1] == check &&
+        this.board[2][0] == check
+      ) {
+        winner = player;
+      }
+    });
 
     if (winner != undefined) {
       this.gameState.state = TicTacToeState.COMPLETED;
