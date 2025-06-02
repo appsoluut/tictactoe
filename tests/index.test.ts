@@ -1,4 +1,4 @@
-import { TicTacToeGame } from '@/index';
+import { Cell, TicTacToeGame } from '@/index';
 
 describe('Tic-Tac-Toe should', () => {
   test('create an empty game board and start with player X', () => {
@@ -18,21 +18,21 @@ describe('Tic-Tac-Toe should', () => {
     expect(tictactoe.display()).toBe(expectedOutput);
   });
 
-  test('validate if player X can fill cell in row 1 column 1', () => {
-    const expectedOutput =
-      `Game Board Creation...\n` +
-      `X| | \n` +
-      `-+-+-\n` +
-      ` | | \n` +
-      `-+-+-\n` +
-      ` | | \n` +
-      `\n` +
-      `Board Created.\n` +
-      `The game will start with player X`;
+  test('validate if player X can fill cell in row 0 column 0', () => {
+    // X| |
+    // -+-+-
+    //  | |
+    // -+-+-
+    //  | |
+    const expectedBoard = [
+      [Cell.X, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.EMPTY],
+      [Cell.EMPTY, Cell.EMPTY, Cell.EMPTY],
+    ];
 
     let tictactoe = new TicTacToeGame();
-    tictactoe.mark({ column: 1, row: 1 });
+    tictactoe.mark({ column: 0, row: 0 });
 
-    expect(tictactoe.display()).toBe(expectedOutput);
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
   });
 });

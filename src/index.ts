@@ -15,6 +15,10 @@ export class TicTacToeGame {
     this.board[row][column] = Cell.X;
   }
 
+  getBoard(): Cell[][] {
+    return this.board;
+  }
+
   display(): string {
     return (
       `Game Board Creation...\n` +
