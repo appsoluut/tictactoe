@@ -18,7 +18,7 @@ describe('Tic-Tac-Toe should', () => {
     expect(tictactoe.display()).toBe(expectedOutput);
   });
 
-  test('validate if player X can fill cell in row 0 column 0', () => {
+  test('validate if player X can mark cell in row 0 column 0', () => {
     // X| |
     // -+-+-
     //  | |
@@ -36,7 +36,7 @@ describe('Tic-Tac-Toe should', () => {
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
   });
 
-  test('validate if player O can fill cell in row 2 column 2', () => {
+  test('validate if player O can mark cell in row 2 column 2', () => {
     // X| |
     // -+-+-
     //  | |
