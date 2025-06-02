@@ -1,4 +1,5 @@
 import { Cell, GameState, Player, TicTacToeGame, TicTacToeState } from '@/index';
+import { Draw } from '../src/index';
 
 describe(`Tic-Tac-Toe should`, () => {
   test(`create an empty game board and start with player X [#US-1]`, () => {
@@ -140,8 +141,36 @@ describe(`Tic-Tac-Toe should`, () => {
     tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
     tictactoe.mark({ column: 0, row: 1 }); // 1: O| |
     tictactoe.mark({ column: 1, row: 1 }); // 1:  |X|
-    tictactoe.mark({ column: 0, row: 2 }); // 2: 0| |
+    tictactoe.mark({ column: 0, row: 2 }); // 2: O| |
     tictactoe.mark({ column: 2, row: 2 }); // 2:  | |
+
+    expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
+    expect(tictactoe.getState()).toStrictEqual(expectedState);
+  });
+
+  test(`validate if game ends with a draw if all cells are filled (US-5)`, () => {
+    // X|O|X
+    // -+-+-
+    // O|O|X
+    // -+-+-
+    // X|X|O
+    const expectedBoard = [
+      [Cell.X, Cell.O, Cell.X],
+      [Cell.O, Cell.O, Cell.X],
+      [Cell.X, Cell.X, Cell.O],
+    ];
+    const expectedState = new GameState(TicTacToeState.COMPLETED, 'draw');
+
+    let tictactoe = new TicTacToeGame();
+    tictactoe.mark({ column: 0, row: 0 }); // 0: X| |
+    tictactoe.mark({ column: 1, row: 0 }); // 0: X|O|
+    tictactoe.mark({ column: 2, row: 0 }); // 0: X|O|X
+    tictactoe.mark({ column: 0, row: 1 }); // 1: O| |
+    tictactoe.mark({ column: 2, row: 1 }); // 1: O| |X
+    tictactoe.mark({ column: 1, row: 1 }); // 1: O|O|X
+    tictactoe.mark({ column: 0, row: 2 }); // 2: X| |
+    tictactoe.mark({ column: 2, row: 2 }); // 2: X| |O
+    tictactoe.mark({ column: 1, row: 2 }); // 2: X|X|O
 
     expect(tictactoe.getBoard()).toStrictEqual(expectedBoard);
     expect(tictactoe.getState()).toStrictEqual(expectedState);

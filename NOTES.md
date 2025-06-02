@@ -8,8 +8,8 @@
 - Validate if player X wins if diagonal line is all filled with X's (US-4)
 
 ⚠️ TODO
-- Validate if game ends with a draw if all cells are filled (US-5)
 
 🚧 WIP
+- Validate if game ends with a draw if all cells are filled (US-5)
 
 🅿️ PARKED

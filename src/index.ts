@@ -3,7 +3,7 @@ type Coordinates = {
   column: number;
 };
 
-type Draw = `draw`;
+export type Draw = `draw`;
 
 export enum Player {
   X = `X`,
