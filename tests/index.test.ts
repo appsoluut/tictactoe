@@ -35,5 +35,4 @@ describe('Tic-Tac-Toe should', () => {
 
     expect(tictactoe.display()).toBe(expectedOutput);
   });
-
 });
