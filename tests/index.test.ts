@@ -1,7 +1,7 @@
 import { Cell, TicTacToeGame } from '@/index';
 
 describe(`Tic-Tac-Toe should`, () => {
-  test(`create an empty game board and start with player X`, () => {
+  test(`create an empty game board and start with player X [#US-1]`, () => {
     const expectedOutput =
       `Game Board Creation...\n` +
       ` | | \n` +
