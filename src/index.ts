@@ -51,11 +51,11 @@ export class TicTacToeGame {
   }
 
   private isFull(): boolean {
-    this.board.forEach((row) => {
-      if (row.some((cell) => cell == undefined)) {
+    for (let row in this.board) {
+      if (this.board[row].some((cell) => cell == Cell.EMPTY)) {
         return false;
       }
-    });
+    }
     return true;
   }
 
@@ -116,16 +116,47 @@ export class TicTacToeGame {
   }
 
   display(): string {
-    return (
-      `Game Board Creation...\n` +
-      ` | | \n` +
-      `-+-+-\n` +
-      ` | | \n` +
-      `-+-+-\n` +
-      ` | | \n` +
-      `\n` +
-      `Board Created.\n` +
-      `The game will start with player X`
-    );
+    let header: string = ``;
+    switch (this.gameState.state) {
+      case TicTacToeState.INITIALIZED: {
+        header = `Game Board Creation...`;
+        break;
+      }
+      case TicTacToeState.COMPLETED:
+      case TicTacToeState.IN_PROGRESS: {
+        const previousPlayer = this.player == Player.X ? Player.O : Player.X;
+        header = `Player ${previousPlayer}:`;
+        break;
+      }
+    }
+    let footer: string = ``;
+    switch (this.gameState.state) {
+      case TicTacToeState.INITIALIZED: {
+        footer = `Board Created.\n` + `The game will start with player ${this.player}`;
+        break;
+      }
+      case TicTacToeState.IN_PROGRESS: {
+        footer = `NEXT PLAYER ${this.player}`;
+        break;
+      }
+      case TicTacToeState.COMPLETED: {
+        if (this.gameState.winner == 'draw') {
+          footer = `THE GAME ENDS WITH A DRAW!`;
+        } else {
+          footer = `PLAYER ${this.gameState.winner} WON!`;
+        }
+        break;
+      }
+    }
+
+    let board: string = ``;
+    for (let row in this.board) {
+      board += this.board[row].join('|') + `\n`;
+      if (Number(row) < this.board.length - 1) {
+        board += `-+-+-\n`;
+      }
+    }
+
+    return `${header}\n` + `${board}\n` + `${footer}`;
   }
 }

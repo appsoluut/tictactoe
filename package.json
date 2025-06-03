@@ -2,15 +2,21 @@
   "name": "tictactoe",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "exports": {
+    "./src": "./src/*.ts"
+  },
+  "main": "bin/runner.js",
+  "bin": {
+    "tic-tac-toe": "bin/runner.js"
+  },
   "scripts": {
-    "test": "jest",
+    "bin": "npx tsc && node bin/src/runner.js",
+    "test": "jest ",
     "lint": "eslint . --ext .ts,.tsx --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "ts-node": "^10.9.2"
   },

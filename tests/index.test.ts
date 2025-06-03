@@ -1,5 +1,4 @@
 import { Cell, GameState, Player, TicTacToeGame, TicTacToeState } from '@/index';
-import { Draw } from '../src/index';
 
 describe(`Tic-Tac-Toe should`, () => {
   test(`create an empty game board and start with player X [#US-1]`, () => {
